@@ -1,0 +1,42 @@
+﻿@namespace Forum.Controllers
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/4.1.3/css/bootstrap.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="float-right">
+        <a asp-controller="Home" asp-action="Index" class="col-1">主页</a>
+        <a asp-controller="Home" asp-action="About" class="col-1">关于</a>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a asp-controller="Account" asp-action="Logout" class="col-1">登出</a>
+            <a asp-controller="Home" asp-action="Create" class="col-1">发表</a>
+        }
+        else
+        {
+            <a asp-controller="Account" asp-action="Login" class="col-1">登录</a>
+            <a asp-controller="Account" asp-action="Signup" class="col-1">注册</a>
+        }
+    </div>
+    <div class="container">
+        @RenderBody()
+    </div>
+
+
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/twitter-bootstrap/4.1.3/js/bootstrap.js"></script>
+</body>
+</html>

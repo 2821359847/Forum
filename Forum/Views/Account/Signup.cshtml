@@ -1,0 +1,30 @@
+﻿@model Forum.Controllers.SignupViewModel
+@{
+    ViewData["Title"] = "Signup";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<h2 class="col-2">Signup</h2>
+<form asp-action="Signup" method="post">
+    <div asp-validation-summary="ModelOnly"></div>
+
+    <div>
+        <label asp-for="Username" class="col-2"></label>
+        <input asp-for="Username" class="col-2" />
+        <span asp-validation-for="Username"></span>
+    </div>
+    <div>
+        <label asp-for="Password" class="col-2"></label>
+        <input asp-for="Password" class="col-2" />
+        <span asp-validation-for="Password"></span>
+    </div>
+    <div>
+        <label asp-for="ConfirmPassword" class="col-2"></label>
+        <input asp-for="ConfirmPassword" class="col-2" />
+        <span asp-validation-for="ConfirmPassword"></span>
+    </div>
+    <div>
+        <input type="submit" value="注册" class="offset-2 col-2 btn btn-primary"/>
+    </div>
+</form>

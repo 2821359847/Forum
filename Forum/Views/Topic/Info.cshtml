@@ -1,0 +1,40 @@
+﻿@model Forum.Controllers.TopicViewModel
+@{
+    ViewData["Title"] = "Info";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<h2>Info</h2>
+<h4>@Model.posting.Title</h4>
+<p>@Model.posting.Body</p>
+<div class="posting-info">
+    <p class="text-left">@Model.posting.Poster</p>
+    <p class="text-right">@Model.posting.Posttime</p>
+</div>
+
+@foreach (var message in Model.messages)
+{
+    <div>
+        <p class="h4">@message.FloorId <span class="h6">@message.Messager</span></p>
+        
+        <p>@message.Text</p>
+    </div>
+    <div class="posting-info">
+        <p class="text-left">@message.Messager</p>
+        <p class="text-right">@message.MessageTime</p>
+    </div>
+}
+
+    <form asp-action="Info" method="post">
+        <div asp-validation-summary="ModelOnly"></div>
+        <div>
+            <label asp-for="PostMessage">发表评论：</label>
+            <textarea asp-for="PostMessage" class="form-control"></textarea>
+            <span asp-validation-for="PostMessage"></span>
+        </div>
+        <div>
+            <input type="submit" value="提交" class="btn float-right"/>
+        </div>
+    </form>
+

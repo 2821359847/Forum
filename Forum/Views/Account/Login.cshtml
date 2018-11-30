@@ -1,0 +1,30 @@
+﻿@model Forum.Controllers.LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<h2 class="col-2">Login</h2>
+<form method="post" asp-controller="Account" asp-action="Login" asp-route-returnurl="@Model.ReturnUrl">
+    <div asp-validation-summary="ModelOnly"></div>
+
+    <div>
+        <label asp-for="Username" class="col-2"></label>
+        <input asp-for="Username" class="col-2"/>
+        <span asp-validation-for="Username"></span>
+    </div>
+
+    <div>
+        <label asp-for="Password" class="col-2"></label>
+        <input asp-for="Password" class="col-2"/>
+        <span asp-validation-for="Password"></span>
+    </div>
+
+    <div>
+        <label asp-for="RememberMe" class="col-2"></label>
+        <input asp-for="RememberMe" class="col-2" />
+        <span asp-validation-for="RememberMe"></span>
+    </div>
+    <input type="submit" value="登录" class="offset-2 col-2 btn btn-primary"/>
+</form>
